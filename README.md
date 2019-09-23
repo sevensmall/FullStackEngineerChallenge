@@ -1,39 +1,39 @@
-# Full Stack Developer Challenge
-This is an interview challengs. Please feel free to fork. Pull Requests will be ignored.
+# PayReview
 
-## Requirements
-Design a web application that allows employees to submit feedback toward each other's performance review.
+This is a sample web app for employees reviews
 
-*Partial solutions are acceptable.*  It is not necessary to submit a complete solution that implements every requirement.
+## App Structure
+```mermaid
+graph LR
+A[Home]  --> B(Admin View)
+B --> D(All employees)
+B --> E(Reviews for one employee)
+A --> C(Employee View)
+C --> F(Reviews and assigned task)
+```
+## Design Ideas
+###  Simple CMS
+The requirement app is considered as a simple CMS which focused on employees infomation and reviews. Therefore, in case of MySQL basic data operation such as **select**, **insert**, **update**, **delete** should be implemented. There should be two tables one for employees, the other for reviews. To deploy and test easily, CSV file was used to save data in this demo. Top admin view was using data api, other pages are using static respones.
+### User Roles
+There are two roles required, administrator and normal employee with different permissions. Administrator can access all data tables but employees can only access data items related to themselves. User authentication process was skipped in this demo.
+### Interfaces
+To provide clear and convinient interactions, data was shown in table and list format, with operation buttons nearby its data element. Operations were completed with less page redirect and refresh.
 
-### Admin view
-* Add/remove/update/view employees
-* Add/update/view performance reviews
-* Assign employees to participate in another employee's performance review
+## Main Technologies
+- Server Side
+	- Node.js (Express) - for handle api request
+	- Database - CSV file was used to make it easy to deploy
+- Front End
+	- React Framwork
+	- Bootstrap
 
-### Employee view
-* List of performance reviews requiring feedback
-* Submit feedback
+## Deploy and Test
 
-## Challenge Scope
-* High level description of design and technologies used
-* Server side API (using a programming language and/or framework of your choice)
-  * Implementation of at least 3 API calls
-  * Most full stack web developers at PayPay currently use Java, Ruby on Rails, or Node.js on the server(with MySQL for the database), but feel free to use other tech if you prefer
-* Web app
-  * Implementation of 2-5 web pages using a modern web framework (e.g. React or Angular) that talks to server side
-    * This should integrate with your API, but it's fine to use static responses for some of it 
-* Document all assumptions made
-* Complete solutions aren't required, but what you do submit needs to run.
+This demo app was able to be deploied and tested using commands  below
 
-## How to complete this challenge
-* Fork this repo in github
-* Complete the design and code as defined to the best of your abilities
-* Place notes in your code to help with clarity where appropriate. Make it readable enough to present to the PayPay interview team
-* Complete your work in your own github repo and send the results to us and/or present them during your interview
+```
+$ npm install
+$ npm start
+```
 
-## What are we looking for? What does this prove?
-* Assumptions you make given limited requirements
-* Technology and design choices
-* Identify areas of your strengths
-* This is not a pass or fail test, this will serve as a common ground that we can deep dive together into specific issues
+Then visit [http://localhost:3000](http://localhost:3000/) to see the result
